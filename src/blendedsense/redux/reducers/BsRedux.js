@@ -1,4 +1,5 @@
 const initialState = {
+  user:null,
   token: null,
 };
 
@@ -9,10 +10,15 @@ export const BsReducer = (state = initialState, action) => {
     
     case "LOGIN_USER_SUCCESS":
       {
+     
         const newState = { ...state };
-      newState.token = payload.token;
-  
+        newState.user=payload.users
+      
+        newState.token = payload.token; 
+      console.log(newState);
+      
         return newState;
+        
       }
     case "LOGIN_USER_FAILED":
        {
