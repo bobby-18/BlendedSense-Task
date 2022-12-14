@@ -1,7 +1,10 @@
 import { React, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { logout } from "./redux/actions/BsActions";
+import { useDispatch } from "react-redux";
 function About() {
   const [auth, setAuth] = useState(false);
+    const dispatch = useDispatch();
   const navigate = useNavigate();
   if (auth) {
     navigate("/");
@@ -9,11 +12,12 @@ function About() {
   function handleClick() {
     setAuth(true);
     localStorage.removeItem("token");
-    localStorage.removeItem('name')
+       window.location.reload();
+       dispatch(logout());
   }
   return (
     <div>
-      <h3>This is About page</h3>
+      <h5>This is About page</h5>
       <button className="back" onClick={handleClick}>
         logout
       </button>

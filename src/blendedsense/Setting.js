@@ -1,8 +1,10 @@
 import {React,useState} from 'react'
 import { useNavigate } from 'react-router-dom';
-
+import { logout } from './redux/actions/BsActions';
+import { useDispatch } from "react-redux";
 function Setting() {
      const [auth, setAuth] = useState(false);
+      const dispatch = useDispatch();
      const navigate=useNavigate();
      if(auth){
         navigate('/')
@@ -10,11 +12,13 @@ function Setting() {
     function handleClick(){
       setAuth(true)
         localStorage.removeItem("token");
-        localStorage.removeItem("name");
+     dispatch(logout());
+
+     window.location.reload();
     }
   return (
     <div>
-      <h2>This is settings page</h2>
+      <h5>This is settings page</h5>
       <button  className="back" onClick={handleClick}>logout</button>
     </div>
   )
