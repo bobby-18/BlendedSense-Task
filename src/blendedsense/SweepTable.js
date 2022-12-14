@@ -338,7 +338,7 @@ function deleteIcon(ele) {
       });
     setTimeout(() => {
       setOpenn(false);
-    }, 1000);
+    }, 4000);
     e.currentTarget.disabled = true;
     // console.log("bobby");
   };
