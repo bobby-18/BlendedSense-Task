@@ -1,11 +1,11 @@
 import React from 'react'
 import {Outlet, Navigate} from 'react-router-dom'
+import { useSelector } from "react-redux";
 function PrivateRoutes() {
- 
-   
-    const data=localStorage.getItem('token')
+   const data = useSelector((state) => state.token); 
+
   return (
-     data ? <Outlet/> : <Navigate to='/'/>
+    data ? <Outlet/> : <Navigate to='/'/>
   )
 }
 
