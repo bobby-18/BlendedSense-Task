@@ -1,32 +1,32 @@
-import React,{useState} from 'react'
+import React from 'react'
 import SweepTable from'./SweepTable'
-import { Button, Modal } from "antd";
-import { Dropdown } from "antd";
-import { Card } from "antd";
+// import { Button, Modal } from "antd";
+// import { Dropdown } from "antd";
+// import { Card } from "antd";
 
-const items = [
-  {
-    key: "1",
-    label: <button>capture content</button>,
-  },
-  {
-    key: "2",
-    label: <button>Meeting</button>,
-  },
-  {
-    key: "3",
-    label: <button>Commute</button>,
-  },
-];
+// const items = [
+//   {
+//     key: "1",
+//     label: <button>capture content</button>,
+//   },
+//   {
+//     key: "2",
+//     label: <button>Meeting</button>,
+//   },
+//   {
+//     key: "3",
+//     label: <button>Commute</button>,
+//   },
+// ];
 function Sweepblocks() {
-    const [modal2Open, setModal2Open] = useState(false);
+    // const [modal2Open, setModal2Open] = useState(false);
   return (
     <>
       <div>
         <div className="input_sweep">
           <div>
           {/* <CustomizedDialogs/> */}
-            <Modal
+            {/* <Modal
               centered
               open={modal2Open}
               onOk={() => setModal2Open(false)}
@@ -50,7 +50,7 @@ function Sweepblocks() {
                   <Button>capture content</Button>
                 </Dropdown>
               </Card>
-            </Modal>
+            </Modal> */}
           </div>
         </div>
         <SweepTable />
