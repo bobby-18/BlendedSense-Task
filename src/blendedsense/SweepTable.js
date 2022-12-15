@@ -180,8 +180,6 @@ console.log(modalData.id)
     setAnchorEl(null);
   };
 
-  
-
   const rows = sweepData.map((ele) => {
    
     let eq = ele.sweepBlockEquipment.shift();

@@ -21,7 +21,7 @@ const { Header, Content, Footer, Sider } = Layout;
 
 function Dashboard() {
   const [auth, setAuth] = useState(false);
-  const [collapsed, setCollapsed] = useState(false);
+  // const [collapsed, setCollapsed] = useState(false);
   const navigate = useNavigate();
   const [producer, setProducer] = useState(false);
   const [admin, setAdmin] = useState(false);
@@ -190,7 +190,7 @@ function Dashboard() {
                 />
               </button>
             </div>
-            <hr className="hrline"></hr>
+           
           </Header>
 
           <Content>
