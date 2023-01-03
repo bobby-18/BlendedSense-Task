@@ -136,11 +136,10 @@ export default function SweepTable() {
   // ------------------------------------------searchfilter-----------------------------------------------------------
 
   const requestSearch = (searchedVal) => {
-    console.log(searchedVal);
     const filteredRows = originalRows.filter((row) => {
       return row.name.toLowerCase().includes(searchedVal.toLowerCase());
     });
-    setRowss(filteredRows);
+    setUpdatedRows(filteredRows);
   };
 
   const cancelSearch = () => {
@@ -222,8 +221,7 @@ export default function SweepTable() {
     setPage(newPage);
   };
   const originalRows = rows;
-  const [rowss, setRowss] = useState(rows);
-  console.log(rowss);
+  const [updatedRows, setUpdatedRows] = useState(rows);
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
@@ -266,7 +264,7 @@ export default function SweepTable() {
     axios
       .get("https://stage.blendedsense.com/api/sweepblocks/list", { headers })
       .then((response) => {
-        setRowss(
+        setUpdatedRows(
           response.data.data.map((ele) => {
             let eq = ele.sweepBlockEquipment.shift();
             return {
@@ -421,7 +419,7 @@ export default function SweepTable() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rowss
+                {updatedRows
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((row) => {
                     return (
@@ -459,7 +457,7 @@ export default function SweepTable() {
           <TablePagination
             rowsPerPageOptions={[5, 10]}
             component="div"
-            count={rowss.length}
+            count={updatedRows.length}
             rowsPerPage={rowsPerPage}
             page={page}
             onPageChange={handleChangePage}

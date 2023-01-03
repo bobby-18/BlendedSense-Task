@@ -100,64 +100,62 @@ BootstrapDialogTitlee.propTypes = {
 };
 // ---------------------------------shot todo-------------------------------------------------------
 export default function SweepDetails() {
- 
-   const [anchorEl, setAnchorEl] = React.useState(null);
-   const [anchorEll, setAnchorEll] = React.useState(null);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEll, setAnchorEll] = React.useState(null);
 
-   const columns = [
-     { id: "name", label: "Name", minWidth: 170 },
+  const columns = [
+    { id: "name", label: "Name", minWidth: 170 },
 
-     {
-       id: "action",
+    {
+      id: "action",
 
-       minWidth: 170,
-       align: "right",
-       format: (value) => value.toLocaleString("en-US"),
-     },
-   ];
-   const open = Boolean(anchorEl);
-   const handleClick = (event) => {
-     setAnchorEl(event.currentTarget);
-   };
-   const handleClose = () => {
-     setAnchorEl(null);
-   };
-   const openPop = Boolean(anchorEll);
-   const handleClickk = (event) => {
-     setAnchorEll(event.currentTarget);
-   };
-   
-     const handleCloseeee = () => {
-       setAnchorEll(null);
-     };
-   var deleteIcon = (
-     <Button
-       onClick={handleClick}
-       className="ellipsisbtn"
-       style={{ color: "black", fontWeight: 800, fontSize: "medium" }}
-     >
-       <EllipsisOutlined />
-     </Button>
-   );
+      minWidth: 170,
+      align: "right",
+      format: (value) => value.toLocaleString("en-US"),
+    },
+  ];
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const openPop = Boolean(anchorEll);
+  const handleClickk = (event) => {
+    setAnchorEll(event.currentTarget);
+  };
 
-   var editIcon = (
-     <Button
-       onClick={handleClickk}
-       className="ellipsisbtn"
-       style={{ color: "black", fontWeight: 800, fontSize: "medium" }}
-     >
-       <EllipsisOutlined />
-     </Button>
-   );
-   function createData(name, action) {
-     return { name, action };
-   }
+  const handleCloseeee = () => {
+    setAnchorEll(null);
+  };
+  var deleteIcon = (
+    <Button
+      onClick={handleClick}
+      className="ellipsisbtn"
+      style={{ color: "black", fontWeight: 800, fontSize: "medium" }}
+    >
+      <EllipsisOutlined />
+    </Button>
+  );
 
-   const rows = [
-     createData("Equipment", deleteIcon),
-     createData("shot setting", editIcon),
-   ];
- 
+  var editIcon = (
+    <Button
+      onClick={handleClickk}
+      className="ellipsisbtn"
+      style={{ color: "black", fontWeight: 800, fontSize: "medium" }}
+    >
+      <EllipsisOutlined />
+    </Button>
+  );
+  function createData(name, action) {
+    return { name, action };
+  }
+
+  const rows = [
+    createData("Equipment", deleteIcon),
+    createData("shot setting", editIcon),
+  ];
 
   const useStyles = makeStyles({
     tableRow: {
@@ -174,20 +172,20 @@ export default function SweepDetails() {
   });
 
   const classes = useStyles();
- const commonStyles = {
-   bgcolor: "background.paper",
-   m: 1,
- };
-  //----------------------Equipment MOdal------------------------------------------  
+  const commonStyles = {
+    bgcolor: "background.paper",
+    m: 1,
+  };
+  //----------------------Equipment MOdal------------------------------------------
 
- const [openn, setOpenn] = React.useState(false);
+  const [openn, setOpenn] = React.useState(false);
 
-   const handleClickOpenn = () => {
-     setOpenn(true);
-   };
-   const handleClosee = () => {
-     setOpenn(false);
-   };
+  const handleClickOpenn = () => {
+    setOpenn(true);
+  };
+  const handleClosee = () => {
+    setOpenn(false);
+  };
   //  -------------------------shot todo-----------------------------------------------------
   const [opennn, setOpennn] = React.useState(false);
 
@@ -206,7 +204,6 @@ export default function SweepDetails() {
               stickyHeader
               aria-label="sticky table"
               className={classes.table}
-              
             >
               <TableHead>
                 <TableRow className={classes.tableRow}>
@@ -229,7 +226,6 @@ export default function SweepDetails() {
               </TableHead>
               <TableBody>
                 {rows.map((row) => {
-                  console.log(rows)
                   return (
                     <TableRow
                       hover

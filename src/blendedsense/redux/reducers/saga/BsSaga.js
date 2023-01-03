@@ -3,7 +3,6 @@ import axios from "axios";
 import swal from "sweetalert";
 
 function* login({ payload }) {
-  console.log(payload);
   try {
     let {
       data: { token },
@@ -66,7 +65,6 @@ function* sweep({ payload }) {
 }
 
 function* equipment({ payload }) {
-  console.log(payload);
   let listData = yield call(
     axios.get,
     "https://stage.blendedsense.com/api/sweepblocks/equipment",

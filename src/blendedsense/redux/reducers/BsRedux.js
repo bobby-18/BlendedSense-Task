@@ -47,11 +47,9 @@ export const BsReducer = (state = initialState, action) => {
       return newState;
     }
     case "BUSINESSES_SUCCESS": {
-      console.log(payload);
       const newState = { ...state };
       newState.token = payload.token;
       newState.projects = payload.finalProjectsListData;
-      console.log(newState);
       return newState;
     }
     default:
