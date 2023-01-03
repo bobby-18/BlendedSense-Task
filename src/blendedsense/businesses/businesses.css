@@ -34,9 +34,6 @@
     width: 100px;
   }
 }
-.actionSearch {
-  display: flex;
-}
 
 .dateandtitle {
   overflow-y: scroll;

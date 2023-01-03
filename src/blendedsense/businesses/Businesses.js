@@ -94,7 +94,13 @@ function Businesses() {
     return (
       <button
         className="ellipsisbtn"
-        style={{ color: "black", fontWeight: 800, fontSize: "medium" }}
+        style={{
+          color: "black",
+          fontWeight: 800,
+          fontSize: "medium",
+          border: "none",
+          borderColor: "white",
+        }}
       >
         <EllipsisOutlined />
       </button>
@@ -223,7 +229,7 @@ function Businesses() {
     <div>
       <h3 className="businessHeadTag">Businesses</h3>
       <div className="sweeptable">
-        <div className="actionSearch">
+        <div style={{ display: "flex" }}>
           <select
             onChange={handleSelectChange}
             style={{ width: 80, fontSize: 10, border: "none" }}
