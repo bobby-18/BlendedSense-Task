@@ -33,7 +33,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { equipment } from "./redux/actions/BsActions";
 
-
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
     padding: theme.spacing(2),
@@ -128,19 +127,19 @@ export default function SweepTable() {
     const token = localStorage.getItem("token");
     dispatch(dashboard({ token }));
     dispatch(sweep({ token }));
-    dispatch(equipment({token}));
+    dispatch(equipment({ token }));
   }, [dispatch]);
 
   const sweepData = useSelector((state) => state.sweep);
-
   const equipmentData = useSelector((state) => state.equipment);
 
   // ------------------------------------------searchfilter-----------------------------------------------------------
 
   const requestSearch = (searchedVal) => {
+    console.log(searchedVal);
     const filteredRows = originalRows.filter((row) => {
       return row.name.toLowerCase().includes(searchedVal.toLowerCase());
-    }); 
+    });
     setRowss(filteredRows);
   };
 
@@ -148,7 +147,7 @@ export default function SweepTable() {
     setSearched("");
     requestSearch(searched);
   };
-console.log(modalData.id)
+
   // ------------------------------------------searchfilter end-------------------------------------------------------
   const columns = [
     {
@@ -181,7 +180,6 @@ console.log(modalData.id)
   };
 
   const rows = sweepData.map((ele) => {
-   
     let eq = ele.sweepBlockEquipment.shift();
     return {
       name: ele.name,
@@ -195,23 +193,22 @@ console.log(modalData.id)
     };
   });
 
+  function deleteIcon(ele) {
+    return (
+      <button
+        onClick={(event) => {
+          handleClick(event);
+          setModalData(ele);
+          setEquData(ele);
+        }}
+        className="ellipsisbtn"
+        style={{ color: "black", fontWeight: 800, fontSize: "medium" }}
+      >
+        <EllipsisOutlined />
+      </button>
+    );
+  }
 
-function deleteIcon(ele) {
-  return (
-    <button
-      onClick={(event) => {
-        handleClick(event);
-        setModalData(ele);
-        setEquData(ele);
-      }}
-      className="ellipsisbtn"
-      style={{ color: "black", fontWeight: 800, fontSize: "medium" }}
-    >
-      <EllipsisOutlined />
-    </button>
-  );
-}
-  
   const equipmentModalData = equipmentData.map((ele) => {
     return {
       equipmentId: ele.id,
@@ -225,8 +222,8 @@ function deleteIcon(ele) {
     setPage(newPage);
   };
   const originalRows = rows;
-  const [rowss, setRowss] = useState(originalRows);
-  console.log(rowss)
+  const [rowss, setRowss] = useState(rows);
+  console.log(rowss);
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
@@ -262,8 +259,7 @@ function deleteIcon(ele) {
 
   function calling() {
     const headers = {
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJzdXBlcmFkbWluQGJsZW5kZWRzZW5zZS5jb20iLCJpYXQiOjE2NzA0ODA3NTIsImV4cCI6MTY3MTA4NTU1Mn0.pv5RPe_E_fyyNYqmCW4wURuzRTJ7k8QY3R51Yk_0Ev0",
+      Authorization: `Bearer ${token}`,
       "client-id": "4CD884F88F476F647CC4446D4593D",
       "client-secret": "A955BEBD27BFC49E8CE12129346A4",
     };
@@ -298,7 +294,6 @@ function deleteIcon(ele) {
     });
   }
 
-
   const [openn, setOpenn] = React.useState(false);
 
   const handleClickOpenn = () => {
@@ -307,7 +302,7 @@ function deleteIcon(ele) {
   const handleClosee = (e) => {
     setOpenn(false);
   };
-    const token = localStorage.getItem("token");
+  const token = localStorage.getItem("token");
   const handle = (e) => {
     e.currentTarget.disabled = true;
     const headers = {
@@ -338,7 +333,6 @@ function deleteIcon(ele) {
       setOpenn(false);
     }, 4000);
     e.currentTarget.disabled = true;
-    // console.log("bobby");
   };
   // ---------------------------------delete sweep Modal------------------------------------------------
   const [opennn, setOpennn] = React.useState(false);
@@ -351,7 +345,6 @@ function deleteIcon(ele) {
   };
 
   const handleDelete = (e) => {
-    
     const headers = {
       Authorization: `Bearer ${token}`,
       "client-id": "4CD884F88F476F647CC4446D4593D",
@@ -367,12 +360,11 @@ function deleteIcon(ele) {
         calling();
       });
     setTimeout(() => {
-    setOpennn(false);
+      setOpennn(false);
     }, 2000);
-    
-     e.currentTarget.disabled = true;
+
+    e.currentTarget.disabled = true;
   };
-    
 
   const updateFormData = (event) =>
     setModalData({
@@ -453,9 +445,7 @@ function deleteIcon(ele) {
                                 fontFamily: "poppins",
                               }}
                             >
-                              {column.format && typeof value === "number"
-                                ? column.format(value)
-                                : value}
+                              {value}
                             </TableCell>
                           );
                         })}

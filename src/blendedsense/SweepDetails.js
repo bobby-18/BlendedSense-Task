@@ -229,6 +229,7 @@ export default function SweepDetails() {
               </TableHead>
               <TableBody>
                 {rows.map((row) => {
+                  console.log(rows)
                   return (
                     <TableRow
                       hover

@@ -1,8 +1,9 @@
 const initialState = {
   user: null,
   token: null,
-  sweep:[],
-  equipment:[]
+  sweep: [],
+  equipment: [],
+  projects: [],
 };
 
 export const BsReducer = (state = initialState, action) => {
@@ -32,17 +33,24 @@ export const BsReducer = (state = initialState, action) => {
       return newState;
     }
     case "SWEEP_SUCCESS": {
-      console.log(payload)
       const newState = { ...state };
       newState.token = payload.token;
       newState.sweep = payload.finalResponse;
-       console.log(newState);
+      console.log(newState);
       return newState;
     }
     case "EQUIPMENT_SUCCESS": {
       const newState = { ...state };
       newState.token = payload.token;
       newState.equipment = payload.finalEquipmentData;
+      console.log(newState);
+      return newState;
+    }
+    case "BUSINESSES_SUCCESS": {
+      console.log(payload);
+      const newState = { ...state };
+      newState.token = payload.token;
+      newState.projects = payload.finalProjectsListData;
       console.log(newState);
       return newState;
     }
