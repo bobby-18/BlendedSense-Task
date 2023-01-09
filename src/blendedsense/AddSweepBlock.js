@@ -32,9 +32,9 @@ function BootstrapDialogTitle(props) {
           onClick={onClosee}
           sx={{
             position: 'absolute',
-            right: 6,
-            top: 8,
-            color: (theme) => theme.palette.grey[500],
+            right: -180,
+            top: 2,
+            color: (theme) => theme.palette.grey[100],
           }}
         >
           <CloseIcon />

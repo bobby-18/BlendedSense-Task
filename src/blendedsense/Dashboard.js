@@ -16,12 +16,15 @@ import {
   ScheduleOutlined,
 } from "@ant-design/icons";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
+import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined";
 import { Layout } from "antd";
+import { calc } from "@chakra-ui/react";
+
 const { Header, Content, Footer, Sider } = Layout;
 
 function Dashboard() {
   const [auth, setAuth] = useState(false);
-  const [collapsed, setCollapsed] = useState(false);
+  const [isLoding, setIsLoding] = useState(true);
   const navigate = useNavigate();
   const [producer, setProducer] = useState(false);
   const [admin, setAdmin] = useState(false);
@@ -41,7 +44,7 @@ function Dashboard() {
   }, [dispatch]);
 
   const proadm = useSelector((state) => state.user);
-  
+
   useEffect(() => {
     if (proadm === "producer") setProducer(true);
   }, [proadm]);
@@ -52,7 +55,7 @@ function Dashboard() {
   return (
     <div className="dashboard">
       <Layout>
-        <div className="sidebar">
+        <div className="sidebar" style={{ overflow: "hidden" }}>
           <Sider />
           <div>
             <img
@@ -92,7 +95,7 @@ function Dashboard() {
               </div>
               <div className="names">
                 <li>
-                  <Link to="/Daashboard" className="link">
+                  <Link to="/Dashboard/projects" className="link">
                     Businesses
                   </Link>
                 </li>
@@ -182,15 +185,15 @@ function Dashboard() {
           >
             <div className="notifications">
               <NotificationsNoneIcon sx={{ fontSize: "20px" }} />
-
               <button className="logoutbtn" onClick={handleClick}>
                 <img
                   className="logoutLogo"
                   src="https://stage.blendedsense.com/img/user.9bf632a1.svg"
                 />
               </button>
+
+              <ArrowDropDownOutlinedIcon onClick={handleClick} />
             </div>
-            <hr className="hrline"></hr>
           </Header>
 
           <Content>
@@ -205,6 +208,7 @@ function Dashboard() {
               <Outlet />
             </div>
           </Content>
+
           <Footer
             style={{
               textAlign: "center",

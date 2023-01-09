@@ -1,13 +1,22 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import { Link, Outlet } from "react-router-dom";
+
 
 
 function SweepBlocks() {
    const [selectedDiv, setSelectedDiv] = useState("");
+  useEffect(() => {
+   const url=[window.location.href];
+   
+   if(url){
+    setSelectedDiv("div1");
+   }
+  },[]);
   return (
     <div >
       <h3 className="sweeph3">Sweep Blocks</h3>
       <ul className="sweeps">
+        
         <li>
           <Link
             to="/Dashboard/SweepBlocks"
@@ -15,6 +24,7 @@ function SweepBlocks() {
               selectedDiv === "div1" ? " selected" : undefined
             }`}
             onClick={() => setSelectedDiv("div1")}
+          
           >
             Sweep Blocks
           </Link>

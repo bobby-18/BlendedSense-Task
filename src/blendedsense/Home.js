@@ -20,7 +20,7 @@ function Home() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     dispatch(refresh({ token }));
-    console.log("KInguuu");
+    
   }, [dispatch]);
   return (
     <div className="home">
