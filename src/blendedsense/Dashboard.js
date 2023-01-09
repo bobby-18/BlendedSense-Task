@@ -18,6 +18,7 @@ import {
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined";
 import { Layout } from "antd";
+import { calc } from "@chakra-ui/react";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -54,7 +55,7 @@ function Dashboard() {
   return (
     <div className="dashboard">
       <Layout>
-        <div className="sidebar">
+        <div className="sidebar" style={{ overflow: "hidden" }}>
           <Sider />
           <div>
             <img

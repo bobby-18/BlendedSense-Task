@@ -8,15 +8,15 @@ import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import Box from "@mui/material/Box";
-import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+import { useSelector, shallowEqual } from "react-redux";
 import { businesses } from "../redux/actions/BsActions";
 import { makeStyles } from "@material-ui/styles";
 import { EllipsisOutlined } from "@ant-design/icons";
 import SearchBar from "material-ui-search-bar";
 import { useNavigate } from "react-router-dom";
+
 function Businesses() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(100);
@@ -60,13 +60,17 @@ function Businesses() {
     },
   ];
   const dispatch = useDispatch();
+  const businessessData = useSelector((state) => state.projects, shallowEqual);
+  const [reduxData, setReduxData] = useState([]);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     dispatch(businesses({ token }));
-  }, [dispatch]);
+  }, []);
+  useEffect(() => {
+    setReduxData(businessessData);
+  }, [businessessData]);
 
-  const businessessData = useSelector((state) => state.projects);
   let imageData = businessessData.map((img) => {
     return img.bannerImage;
   });
@@ -99,7 +103,7 @@ function Businesses() {
           fontWeight: 800,
           fontSize: "medium",
           border: "none",
-          borderColor: "white",
+          backgroundColor: "white",
         }}
       >
         <EllipsisOutlined />
@@ -107,7 +111,7 @@ function Businesses() {
     );
   }
 
-  const rows = businessessData.map((ele) => {
+  const rows = reduxData.map((ele) => {
     if (ele.type === "1") {
       return {
         img: images(),
@@ -142,42 +146,22 @@ function Businesses() {
       };
     }
   });
+
   const [rowss, setRowss] = useState(rows);
+
   // ------------------------------sweepas api calling ---------------------------------------------
-  const token = localStorage.getItem("token");
+
   const navigate = useNavigate();
 
   const handle = (sweepid) => {
     navigate(`/Dashboard/project_overview/${sweepid}`);
-
-    const headers = {
-      Authorization: `Bearer ${token}`,
-      "client-id": "4CD884F88F476F647CC4446D4593D",
-      "client-secret": "A955BEBD27BFC49E8CE12129346A4",
-    };
-    axios
-      .get(
-        `https://stage.blendedsense.com/api/sweep/list/${sweepid}?timeZone=Asia/Calcutta`,
-        { headers }
-      )
-      .then((response) => {
-        console.log(
-          response.data.sweeps.history.map((dat) => {
-            return {
-              date: dat.date,
-              title: dat.title,
-            };
-          })
-        );
-      });
   };
 
   // -------------------------sweeps ending---------------------------------------------
 
-  // ------------------------------------------searchfilter-----------------------------------------------------------
+  // ------------------------------------------searchfilter-----------------------------------------------------------------
 
   const requestSearch = (searchedVal) => {
-    console.log(searchedVal);
     const filteredRows = rows.filter((row) =>
       row?.name?.toLowerCase()?.includes(searchedVal?.toLowerCase())
     );
@@ -225,6 +209,7 @@ function Businesses() {
   const handleSelectChange = (e) => {
     setSelectedId(e.target.value);
   };
+
   return (
     <div>
       <h3 className="businessHeadTag">Businesses</h3>
@@ -281,7 +266,7 @@ function Businesses() {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {rowss
+                  {rows
                     .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                     .filter((value) => {
                       if (selectedId) {
@@ -328,7 +313,7 @@ function Businesses() {
             <TablePagination
               rowsPerPageOptions={[50, 100]}
               component="div"
-              count={rowss.length}
+              count={reduxData.length}
               rowsPerPage={rowsPerPage}
               page={page}
               onPageChange={handleChangePage}

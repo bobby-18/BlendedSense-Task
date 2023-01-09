@@ -1,4 +1,4 @@
-import { all, call, put, takeEvery } from "redux-saga/effects";
+import { all, call, put, takeLatest, delay } from "redux-saga/effects";
 import axios from "axios";
 import swal from "sweetalert";
 
@@ -91,7 +91,8 @@ function* businesses({ payload }) {
       },
     }
   );
-  console.log(projectsListData);
+  console.log("project data", projectsListData);
+
   let finalProjectsListData = projectsListData.data.businesses;
   console.log(finalProjectsListData);
   yield put({
@@ -104,11 +105,11 @@ function* businesses({ payload }) {
 }
 
 export function* WatchUser() {
-  yield all([takeEvery("LOGIN_USER", login)]);
-  yield all([takeEvery("DASHBOARD_REFRESH", dashboard)]);
-  yield all([takeEvery("SWEEP_DETAILS", sweep)]);
-  yield all([takeEvery("SWEEP_EQUIPMENT", equipment)]);
-  yield all([takeEvery("BUSINESSES_PROJECTS", businesses)]);
-  yield all([takeEvery("REFRESH_DATA", refresh)]);
-  yield all([takeEvery("LOGOUT", logout)]);
+  yield all([takeLatest("LOGIN_USER", login)]);
+  yield all([takeLatest("DASHBOARD_REFRESH", dashboard)]);
+  yield all([takeLatest("SWEEP_DETAILS", sweep)]);
+  yield all([takeLatest("SWEEP_EQUIPMENT", equipment)]);
+  yield all([takeLatest("BUSINESSES_PROJECTS", businesses)]);
+  yield all([takeLatest("REFRESH_DATA", refresh)]);
+  yield all([takeLatest("LOGOUT", logout)]);
 }

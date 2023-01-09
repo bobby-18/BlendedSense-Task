@@ -35,7 +35,10 @@
   bottom: 2.5%;
   width: 100%;
 }
-
+.site-layout-background {
+  height: 100vh;
+  overflow: scroll;
+}
 body {
   overflow-x: hidden;
   overflow-y: hidden;
@@ -198,7 +201,7 @@ button:hover {
 .hr-text:after {
   content: attr(data-content);
   position: relative;
-  display: inline-block;
+  display: inline-hilock;
   color: black;
   padding: 0 0.5em;
   line-height: 1.5em;
@@ -448,6 +451,7 @@ body {
 .sidebar {
   background-color: #262626;
   width: 150px;
+  max-height: 100vh;
 }
 .navbar {
   color: white;
@@ -713,4 +717,7 @@ select {
 
 .hidden {
   display: none;
+}
+.show {
+  display: block;
 }

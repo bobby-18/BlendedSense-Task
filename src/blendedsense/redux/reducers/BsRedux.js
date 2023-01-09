@@ -52,6 +52,7 @@ export const BsReducer = (state = initialState, action) => {
       newState.projects = payload.finalProjectsListData;
       return newState;
     }
+
     default:
       const newState = { ...state };
       return (state = newState);

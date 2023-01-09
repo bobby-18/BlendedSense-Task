@@ -121,7 +121,6 @@ export default function SweepTable() {
   const [modalData, setModalData] = useState("");
   const [equData, setEquData] = useState("");
 
-  console.log(equData);
   const dispatch = useDispatch();
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -132,11 +131,14 @@ export default function SweepTable() {
 
   const sweepData = useSelector((state) => state.sweep);
   const equipmentData = useSelector((state) => state.equipment);
-
+  const [reduxData, setReduxData] = useState([]);
+  useEffect(() => {
+    setReduxData(sweepData);
+  }, [sweepData]);
   // ------------------------------------------searchfilter-----------------------------------------------------------
 
   const requestSearch = (searchedVal) => {
-    const filteredRows = originalRows.filter((row) => {
+    const filteredRows = rows.filter((row) => {
       return row.name.toLowerCase().includes(searchedVal.toLowerCase());
     });
     setUpdatedRows(filteredRows);
@@ -201,7 +203,13 @@ export default function SweepTable() {
           setEquData(ele);
         }}
         className="ellipsisbtn"
-        style={{ color: "black", fontWeight: 800, fontSize: "medium" }}
+        style={{
+          color: "black",
+          fontWeight: 800,
+          fontSize: "medium",
+          border: "none",
+          backgroundColor: "white",
+        }}
       >
         <EllipsisOutlined />
       </button>
@@ -215,12 +223,11 @@ export default function SweepTable() {
       action: deleteIcon(ele),
     };
   });
-  console.log(equipmentModalData);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
-  const originalRows = rows;
+
   const [updatedRows, setUpdatedRows] = useState(rows);
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
@@ -565,7 +572,7 @@ export default function SweepTable() {
               </form>
             </div>
             <div
-              className={modalData.sweepBlockTypeId === 1 ? "block" : "hidden"}
+              className={modalData.sweepBlockTypeId === 1 ? "show" : "hidden"}
             >
               <hr></hr>
               <span className="editmodalheading">Capture Settings</span>

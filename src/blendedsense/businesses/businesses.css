@@ -36,43 +36,62 @@
 }
 
 .dateandtitle {
-  overflow-y: scroll;
-  height: 150px;
   width: 250px;
   font-size: 8px;
+  margin-left: 40px;
+  margin-bottom: 50px;
 }
 .title {
-  padding-left: 60px;
-}
-.history {
-  font-size: 20px;
-  padding-bottom: 5px;
-  color: #929292;
-  font-family: "Poppins", sans-serif;
-  border-bottom: 1px solid #d8d8d8;
-  width: 50%;
-}
-.Active {
-  font-size: 16px;
-  padding-bottom: 5px;
-  color: #929292;
-  font-family: "Poppins", sans-serif;
-  border-bottom: 1px solid #d8d8d8;
-  width: 50%;
-  margin-left: 50px;
+  padding-left: 20px;
+  font-size: 10px;
 }
 
-.sweepHistoryBlock {
-  margin-top: 130px;
+.tableClass {
+  width: 250px;
+}
+.history {
+  font-size: 18px;
+  padding-bottom: 5px;
+  color: #929292;
+  font-family: "Poppins", sans-serif;
+  border-bottom: 1px solid #d8d8d8;
+  width: 50%;
+  margin-top: 10px;
+  font-weight: 600;
+  margin-left: 40px;
+}
+.Active {
+  font-size: 18px;
+  padding-bottom: 5px;
+  color: #929292;
+  font-family: "Poppins", sans-serif;
+  border-bottom: 1px solid #d8d8d8;
+  width: 50%;
+  margin-left: 10px;
+  font-weight: 600;
+}
+
+.ActiveSweeps {
+  margin-top: 10px;
+}
+.ActiveSweepss {
+  width: 800px;
+}
+.overallActivesweep {
   margin-left: 50px;
-  position: sticky;
+}
+.sweepHistoryBlock {
+  margin-left: 20px;
+}
+
+table th {
+  top: 0;
+  z-index: 1;
+  background: #fff;
 }
 table th {
   position: -webkit-sticky;
   position: sticky;
-  top: 0;
-  z-index: 1;
-  background: #fff;
 }
 .fromtime {
   display: flex;
@@ -80,12 +99,10 @@ table th {
   font-size: small;
 }
 .upcomingBlock {
-  overflow-y: scroll;
-  height: 100px;
-  width: 250px;
+  width: 600px;
   font-size: 18px;
   font-family: "Poppins", sans-serif;
-  margin-left: 50px;
+  padding-left: 20px;
 }
 .calender {
   display: flex;
@@ -93,4 +110,44 @@ table th {
 }
 .location {
   display: flex;
+}
+.upcomingSweepsData {
+  width: 800px;
+}
+.noSweep {
+  font-size: 10px;
+  font-family: "Poppins", sans-serif;
+  color: #262626;
+  margin-top: 40px;
+  margin-bottom: 50px;
+  margin-left: 140px;
+}
+.noUpcomingSweep {
+  font-size: 10px;
+  font-family: "Poppins", sans-serif;
+  color: #262626;
+  margin-top: 40px;
+  margin-bottom: 50px;
+  margin-left: 140px;
+}
+.overallContainer {
+  overflow-y: auto;
+}
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+.titlee {
+  font-size: 12px;
+  font-weight: 600;
+  font-family: "poppins", sans-serif;
+  color: #343838;
+  margin-top: 10px;
+}
+.showmore {
+  color: #8066ff;
+  font-weight: bold;
+  font-family: "poppins";
+  cursor: pointer;
 }
