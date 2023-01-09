@@ -1,4 +1,4 @@
-import { all, call, put, takeLatest, delay } from "redux-saga/effects";
+import { all, call, put, takeLatest } from "redux-saga/effects";
 import axios from "axios";
 import swal from "sweetalert";
 
@@ -28,14 +28,13 @@ function* login({ payload }) {
   }
 }
 function* dashboard({ payload }) {
-  console.log(payload);
   let {
     data: { user },
   } = yield call(axios.get, "https://stage.blendedsense.com/api/users/me", {
     headers: { Authorization: `Bearer ${payload.token}` },
   });
   let users = user.role.name;
-  console.log(users);
+
   yield put({ type: "DASHBOARD_SUCCESS", payload: { users } });
 }
 function* logout() {
@@ -43,7 +42,6 @@ function* logout() {
 }
 
 function* refresh({ payload }) {
-  console.log(payload);
   yield put({ type: "REFRESH_SUCCESS", payload });
 }
 function* sweep({ payload }) {
@@ -57,7 +55,7 @@ function* sweep({ payload }) {
     }
   );
   let finalResponse = responsee.data.data;
-  console.log(finalResponse);
+
   yield put({
     type: "SWEEP_SUCCESS",
     payload: { finalResponse: finalResponse, token: payload.token },
@@ -75,7 +73,7 @@ function* equipment({ payload }) {
     }
   );
   let finalEquipmentData = listData.data.data;
-  console.log(finalEquipmentData);
+
   yield put({
     type: "EQUIPMENT_SUCCESS",
     payload: { finalEquipmentData: finalEquipmentData, token: payload.token },
@@ -91,10 +89,9 @@ function* businesses({ payload }) {
       },
     }
   );
-  console.log("project data", projectsListData);
 
   let finalProjectsListData = projectsListData.data.businesses;
-  console.log(finalProjectsListData);
+
   yield put({
     type: "BUSINESSES_SUCCESS",
     payload: {

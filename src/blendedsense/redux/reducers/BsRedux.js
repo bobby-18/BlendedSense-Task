@@ -36,14 +36,14 @@ export const BsReducer = (state = initialState, action) => {
       const newState = { ...state };
       newState.token = payload.token;
       newState.sweep = payload.finalResponse;
-      console.log(newState);
+
       return newState;
     }
     case "EQUIPMENT_SUCCESS": {
       const newState = { ...state };
       newState.token = payload.token;
       newState.equipment = payload.finalEquipmentData;
-      console.log(newState);
+
       return newState;
     }
     case "BUSINESSES_SUCCESS": {

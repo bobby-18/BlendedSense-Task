@@ -66,33 +66,10 @@ function Businesses() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     dispatch(businesses({ token }));
-  }, []);
+  });
   useEffect(() => {
     setReduxData(businessessData);
   }, [businessessData]);
-
-  let imageData = businessessData.map((img) => {
-    return img.bannerImage;
-  });
-  function images() {
-    if (imageData.bannerImage) {
-      return (
-        <img
-          src={imageData.bannerImage}
-          style={{ width: 20, height: 20 }}
-          alt="img0"
-        />
-      );
-    } else {
-      return (
-        <img
-          src="https://stage.blendedsense.com/img/businesses.eba97e8e.svg"
-          alt="img1"
-          style={{ width: 20, height: 20 }}
-        />
-      );
-    }
-  }
 
   function deleteIcon() {
     return (
@@ -114,7 +91,17 @@ function Businesses() {
   const rows = reduxData.map((ele) => {
     if (ele.type === "1") {
       return {
-        img: images(),
+        img: (
+          <img
+            src={
+              ele.bannerImage
+                ? ele.bannerImage
+                : "https://stage.blendedsense.com/img/businesses.eba97e8e.svg"
+            }
+            alt="img1"
+            style={{ width: 20, height: 20 }}
+          />
+        ),
         name: ele.name,
         type: "Business",
         BusinessVertical:
@@ -130,7 +117,17 @@ function Businesses() {
       };
     } else {
       return {
-        img: images(),
+        img: (
+          <img
+            src={
+              ele.bannerImage
+                ? ele.bannerImage
+                : "https://stage.blendedsense.com/img/organisations.aeb897e7.svg"
+            }
+            alt="img2"
+            style={{ width: 20, height: 20 }}
+          />
+        ),
         type: "Organization",
         name: ele.name,
         action: deleteIcon(),
