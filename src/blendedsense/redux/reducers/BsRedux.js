@@ -4,6 +4,7 @@ const initialState = {
   sweep: [],
   equipment: [],
   projects: [],
+  time: [],
 };
 
 export const BsReducer = (state = initialState, action) => {
@@ -52,7 +53,13 @@ export const BsReducer = (state = initialState, action) => {
       newState.projects = payload.finalProjectsListData;
       return newState;
     }
-
+    case "TIMEZONE_SUCCESS": {
+      console.log(payload.finalTimeZoneData);
+      const newState = { state };
+      newState.token = payload.token;
+      newState.time = payload.finalTimeZoneData;
+      return newState;
+    }
     default:
       const newState = { ...state };
       return (state = newState);

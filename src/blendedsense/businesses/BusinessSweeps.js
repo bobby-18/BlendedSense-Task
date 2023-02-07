@@ -4,6 +4,7 @@ import axios from "axios";
 import { CalendarOutlined } from "@ant-design/icons";
 import AddLocationAltOutlinedIcon from "@mui/icons-material/AddLocationAltOutlined";
 import { Col } from "react-bootstrap";
+import AddSweep from "./AddSweep";
 function BusinessSweeps() {
   const { sweepid } = useParams();
   const token = localStorage.getItem("token");
@@ -73,7 +74,10 @@ function BusinessSweeps() {
     <div className="overallContainer">
       <div className="overallActivesweep">
         <div className="ActiveSweepss">
-          <h3 className="Active">Active Sweeps</h3>
+          <div className="Active-Modal">
+            <h3 className="Active">Active Sweeps</h3>
+            <AddSweep />
+          </div>
           {activeData.length === 0 ? (
             <p className="noUpcomingSweep">No Active Sweeps</p>
           ) : (
@@ -123,10 +127,11 @@ function BusinessSweeps() {
           )}
         </div>
       </div>
+
       <div className="overallActivesweep">
         <div className="upcomingSweepsData">
           <div className="ActiveSweeps ">
-            <h3 className="Active">Upcoming Sweeps</h3>
+            <h3 className="Activee">Upcoming Sweeps</h3>
 
             {upcomigData.length === 0 ? (
               <p className="noUpcomingSweep">No Upcoming Sweep</p>

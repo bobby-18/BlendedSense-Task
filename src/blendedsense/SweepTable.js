@@ -223,6 +223,7 @@ export default function SweepTable() {
       action: deleteIcon(ele),
     };
   });
+  console.log(equipmentModalData);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);

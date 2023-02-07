@@ -60,17 +60,20 @@ function Businesses() {
     },
   ];
   const dispatch = useDispatch();
-  const businessessData = useSelector((state) => state.projects, shallowEqual);
+  const businessessData = useSelector((state) => state.projects);
   const [reduxData, setReduxData] = useState([]);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     dispatch(businesses({ token }));
-  });
+  }, [dispatch]);
   useEffect(() => {
     setReduxData(businessessData);
   }, [businessessData]);
 
+  const clickMe = () => {
+    alert("thank u");
+  };
   function deleteIcon() {
     return (
       <button
@@ -82,6 +85,7 @@ function Businesses() {
           border: "none",
           backgroundColor: "white",
         }}
+        onClick={clickMe}
       >
         <EllipsisOutlined />
       </button>
@@ -144,7 +148,7 @@ function Businesses() {
     }
   });
 
-  const [rowss, setRowss] = useState(rows);
+  const [rowss, setRowss] = useState("");
 
   // ------------------------------sweepas api calling ---------------------------------------------
 

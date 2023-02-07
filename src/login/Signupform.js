@@ -1,9 +1,9 @@
-import { React, Component } from "react"; 
-
-      const defaultState = {
-        email: "",
-        password: ""
-      };
+import { React, Component } from "react";
+import { ToastContainer } from "react-toastify";
+const defaultState = {
+  email: "",
+  password: "",
+};
 class Signupform extends Component {
   constructor() {
     super();
@@ -15,7 +15,7 @@ class Signupform extends Component {
       [event.target.name]: event.target.value,
     });
   }
-  errors(){
+  errors() {
     let emailError = "";
     let passwordError = "";
     const reg = /^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/;
@@ -34,7 +34,7 @@ class Signupform extends Component {
   submit() {
     if (this.errors()) {
       this.props.onSubmit([this.state]);
-      this.setState(defaultState); 
+      this.setState(defaultState);
     }
   }
   render() {
@@ -62,11 +62,11 @@ class Signupform extends Component {
                 name="password"
                 value={this.state.password}
                 onChange={this.handleInputChange}
-                className="password"   
+                className="password"
               />
               <p className="text-danger">{this.state.passwordError}</p>
             </div>
-          </div> 
+          </div>
           <br />
           <div className="form-row">
             <div className="col-xs-4text-center">
@@ -77,11 +77,12 @@ class Signupform extends Component {
               >
                 Login With Email
               </button>
+              <ToastContainer autoOpen={10} autoClose={2500} />
             </div>
           </div>
         </div>
       </div>
-    );  
+    );
   }
 }
 export default Signupform;

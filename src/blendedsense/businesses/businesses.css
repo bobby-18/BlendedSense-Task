@@ -66,8 +66,18 @@
   color: #929292;
   font-family: "Poppins", sans-serif;
   border-bottom: 1px solid #d8d8d8;
-  width: 50%;
-  margin-left: 10px;
+  width: 57%;
+
+  font-weight: 600;
+}
+.Activee {
+  font-size: 18px;
+  padding-bottom: 5px;
+  color: #929292;
+  font-family: "Poppins", sans-serif;
+  border-bottom: 1px solid #d8d8d8;
+  width: 57%;
+
   font-weight: 600;
 }
 
@@ -150,4 +160,75 @@ table th {
   font-weight: bold;
   font-family: "poppins";
   cursor: pointer;
+}
+.Active-Modal {
+  display: flex;
+}
+.AddSweepBtn {
+  margin-left: 35px;
+  border: 1px solid;
+  border-radius: 25px;
+  font-family: "Poppins", sans-serif;
+  background-color: #8066ff;
+  color: white;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 5px 60px 5px 60px;
+}
+.AddSweepBtn:hover {
+  background-color: #775ef0;
+}
+.date-input-field {
+  max-width: 7rem;
+  height: 25px;
+}
+.selectoption {
+  width: 4rem;
+  font-size: 10px;
+}
+
+.selectoption:focus {
+  outline: none !important;
+  border: 1.5px solid #8066ff;
+  border-radius: 2px;
+}
+
+.TimeContainer {
+  display: flex;
+}
+.amPmdivider {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.DateAndTimeFlex {
+  display: flex;
+}
+.selectoptionOne {
+  margin-left: 50px;
+}
+.selectoptionOne:focus {
+  outline: none !important;
+  border: 1.5px solid #8066ff;
+  border-radius: 2px;
+}
+.selectoptionForTimezone {
+  width: 3rem;
+  font-size: 10px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: dashed #775ef0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: "";
+  margin-left: 5px;
+  color: #acacac;
+}
+.selectoptionForTimezone:focus {
+  outline: none !important;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: dashed #775ef0;
 }

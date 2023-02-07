@@ -1,4 +1,5 @@
 export const login = (data) => {
+  console.log(data);
   return {
     type: "LOGIN_USER",
     payload: data,
@@ -38,6 +39,13 @@ export const equipment = (data) => {
 export const businesses = (data) => {
   return {
     type: "BUSINESSES_PROJECTS",
+    payload: data,
+  };
+};
+
+export const timezones = (data) => {
+  return {
+    type: "TIME_ZONES",
     payload: data,
   };
 };
